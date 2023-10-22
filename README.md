@@ -1,2 +1,3 @@
 **Explorando o básico da linguagem C.**
-Exercícios resolvidos e avaliaçĩes.
+
+Exercícios resolvidos e avaliações.
