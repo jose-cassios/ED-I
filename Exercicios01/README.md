@@ -1,1 +1,2 @@
-# README PARA EXERCICIOS 01
+# EXERCICIOS
+## Programação Estruturada
