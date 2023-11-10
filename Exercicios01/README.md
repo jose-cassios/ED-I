@@ -1,2 +1,2 @@
-# EXERCICIOS
-## Programação Estruturada
+# EXERCÍCIOS 01
+## Estrutura de Dados I
