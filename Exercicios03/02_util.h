@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 // Student structure, stores enrollment, name and grades.
 typedef struct Student{
     char matricula[20], nome[20];

@@ -1,7 +1,3 @@
-/*Faça um programa que leia um vetor com os dados de 5 carros: marca, ano e preço. Em
-seguida, leia um determinado valor e mostre as informações de todos os carros com preço
-menor que o valor informado.*/
-
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
