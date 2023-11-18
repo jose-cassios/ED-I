@@ -1,15 +1,15 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Função que recebe o vetor e a quantidade de elementos
+// Function that receives the vector and the number of elements
 int readWriter(int *v, int n){
-    // Lê o vetor
+    // Reads the vector
     for (int i=0; i < n; i++){
-        printf("Digite o elemento %d: ", i+1);
+        printf("Enter element %d: ", i+1);
         scanf("%d", &v[i]);
     }
 
-    // Escreve o vetor na tela
+    // Display the vector on the screen
     for (int i = 0; i < n; i++){
         printf("%d ", v[i]);
     }
@@ -19,25 +19,25 @@ int readWriter(int *v, int n){
 }
 
 int main(void){
-    // Declarando variáveis
+    // Declaring variables
     int n, *v;
 
-    // Solicitando os dados
-    printf("Digite a quantidade de elementos do vetor: ");
+    // Requesting the data
+    printf("Enter the number of elements in the vector: ");
     scanf("%d", &n);
 
-    v = (int *) malloc(n * sizeof(int)); // v armazena a primeira posição da memória alocada
+    v = (int *) malloc(n * sizeof(int)); // v stores the first memory location allocated
     
-    // Trantando o caso de erro da função malloc retornar NULL
+    // Treating the error case of the malloc function returning NULL
     if (v == NULL){
-        printf("Erro de alocação");
+        printf("Allocation error");
         exit(1);
     }
     
-    // Chamando a função
+    // Calling the function
     readWriter(v, n);
 
-    // Libera a memória alocada
+    // Frees allocated memory
     free(v);
 
     return 0;

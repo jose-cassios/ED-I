@@ -2,34 +2,34 @@
 #include <stdlib.h>
 
 int main(void){
-    // Declarando variáveis
-    int n_alunos;
-    float *notas, sum = 0;
+    // Declaring variables
+    int n_students;
+    float *grades, sum = 0;
 
-    // Solicitando os dados
-    printf("Digite a quantidade de alunos na turma CC10: ");
-    scanf("%d", &n_alunos);
+    // Requesting the data
+    printf("Enter the number of students in the CC10 class: ");
+    scanf("%d", &n_students);
 
-    // Alocando memória dinamicamente
-    notas = (float *) malloc(n_alunos * sizeof(float));
+    // Allocating memory dynamically
+    grades = (float *) malloc(n_students * sizeof(float));
 
-    // Trantando o caso de erro da função malloc retornar NULL
-    if (notas == NULL){
-        printf("Erro de alocação");
+    // Treating the error case of the malloc function returning NULL
+    if (grades == NULL){
+        printf("Allocation error");
         exit(1);
     }
 
-    // Lendo o vetor
-    for (int i = 0; i < n_alunos; i++){
-        printf("Digite a nota do aluno %d: ", i+1);
-        scanf("%f", &notas[i]);
-        sum += notas[i];
+    // Reading the vector
+    for (int i = 0; i < n_students; i++){
+        printf("Enter student grade %d: ", i+1);
+        scanf("%f", &grades[i]);
+        sum += grades[i];
     }
 
-    // Imprime a média
-    printf("A média da turma foi %.2f\n", sum / n_alunos);
+    // Print the average
+    printf("The class average was %.2f\n", sum / n_students);
 
-    free(notas); // Libera a memória alocada
+    free(grades); // Frees allocated memory
 
     return 0;
 }

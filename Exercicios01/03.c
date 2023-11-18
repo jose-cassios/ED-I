@@ -1,34 +1,33 @@
 #include <stdio.h>
 
 int main(void){
-    // Declarando variáveis
-    float notas[10];
-    float maior = 0, menor = 0;
+    // Declaring variables
+    float grades[10];
+    float larger = 0, smaller = 0;
 
-    // Lendo o vetor de notas
+    // Reading the grades to be stored in the vector
     for (int i = 0; i < 10; i++){
-        printf("Digite a nota do aluno %d: ", i+1);
-        scanf("%f", &notas[i]);
+        printf("Enter student grade %d: ", i+1);
+        scanf("%f", &grades[i]);
     }
 
-    // Comparando se cada posição do vetor é a maior ou a menor nota
+    // Comparing whether each position in the vector is the larger or smaller grade
     for (int i = 0; i < 10; i++){
         if (i == 0){
-            maior = menor = notas[i];
+            larger = smaller = grades[i];
         }
         else {
-            if (notas[i] > maior){
-                maior = notas[i];
+            if (grades[i] > larger){
+                larger = grades[i];
             }
-            if (notas[i] < menor){
-                menor = notas[i];
+            if (grades[i] < smaller){
+                smaller = grades[i];
             }
-        }
-        
+        }    
     }
 
-    // Imprime o resultado
-    printf("A maior nota foi %.1f e a menor foi %.1f!", maior, menor);
+    // Print the result
+    printf("The highest grade was %.1f and the lowest was %.1f!", larger, smaller);
     
     return 0;
 }

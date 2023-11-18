@@ -1,18 +1,17 @@
 #include <stdio.h>
 
 int main(void){
-    // Declarando variáveis
+    // Declaring variables
     int n;
     
-    // Recebendo o número
-    printf("Digite um número de 1 a 9: ");
+    // Reading the number
+    printf("Enter a number from 1 to 9: ");
     scanf("%d", &n);
 
-    // Exibe as multiplicações
+    // Display multiplications
     for (int i = 0; i <= 10; i++){
         printf("%d x %d = %d\n", n, i, n*i);
     }
-    
 
     return 0;
 }

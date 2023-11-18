@@ -1,18 +1,18 @@
 #include <stdio.h>
 
 int main(void){
-    // Declarando variáveis
+    // Declaring variables
     int v[4] = {0,1,2,3}; 
-    int *ponteiro;
+    int *pointer;
 
-    ponteiro = v; // Passando o endereço da primeira posição do vetor 
+    pointer = v; // Passing the vector head address
 
     for (int i = 0; i < 4; i++){
-        *ponteiro += 1; // Soma 1 no valor de v[i]
-        ponteiro++; // Soma 1 no endereço do vetor
+        *pointer += 1; // Add 1 to the value of v[i]
+        pointer++; // Sum 1 at vector address
     }
 
-    //Imprime o vetor com a soma
+    //Print the vector with the sum
     for (int i = 0; i<4; i++){
         printf("%d ", v[i]);
     }

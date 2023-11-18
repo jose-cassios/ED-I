@@ -1,7 +1,7 @@
 #include <stdio.h>
 
-// Atribui o dobro de A e B em seus endereços e retorna a soma dos novos A e B
-int somadobro(int *p, int *b){
+// takes the double values of *p and *b, then returns the sum of the new values.
+int sumDoubled(int *p, int *b){
     *p = (*p) * 2;
     *b = (*b) * 2;
 
@@ -9,15 +9,15 @@ int somadobro(int *p, int *b){
 }
 
 int main(void){
-    // Declarando variáveis
+    // Declaring variables
     int A, B;
 
-    // Solicitando os valores
-    printf("Digite o valor de 2 inteiros: ");
+    // Requesting values
+    printf("Enter the value of 2 integers: ");
     scanf("%d %d", &A, &B);
 
-    // Chamando a função dentro do printf que exibirá a soma do dobro
-    printf("A soma entre %d e %d é %d\n", A, B, somadobro(&A, &B));
+    // Calling the function inside printf that will display the sum of double
+    printf("The sum of %d and %d is %d\n", A, B, sumDoubled(&A, &B));
 
     return 0;
 }

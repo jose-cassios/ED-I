@@ -1,25 +1,25 @@
 #include <stdio.h>
 
 int main(void){
-    // Declarando variáveis
-    char nome[20];
-    char sexo;
+    // Declaring variables
+    char name[20];
+    char gender;
 
-    // Solicitando os dados
-    printf("Digite seu nome: ");
-    fgets(nome, 20, stdin);
-    printf("Digite seu sexo (M/F): ");
-    scanf(" %c", &sexo);
+    // Requesting the data
+    printf("Enter your name: ");
+    fgets(name, 20, stdin);
+    printf("Enter your gender (M/F): ");
+    scanf(" %c", &gender);
 
-    // Compara se o sexo é masculino ou feminino
-    if (sexo == 'm' || sexo == 'M'){
-        printf("Bem-vindo %s", nome);
+    // compares whether the sex is male or female
+    if (gender == 'm' || gender == 'M'){
+        printf("Welcome, Sir %s", name);
     }
-    else if (sexo == 'f' || sexo == 'F'){
-        printf("Bem-vinda %s", nome);
+    else if (gender == 'f' || gender == 'F'){
+        printf("Welcome, Miss %s", name);
     }
     else {
-        printf("Não computável!"); // Pois programas só reconhecem binário
+        printf("Not computable!"); // Because programs only recognize binary
     }
     
 
