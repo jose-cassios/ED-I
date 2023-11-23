@@ -1,68 +1,69 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-// Definindo as structs
+// Defining the structures
 typedef struct {
-    int hora, minutos, segundos, validado;
+    int hour, minutes, seconds, validated;
 
-} Horario;
+} Time;
+
 typedef struct {
-    int dia, mes, ano, validado;
+    int day, month, year, validated;
 
-} Data;
+} Date;
 
-Horario *horario;
-Data *data;
-
-// Função que libera a memória alocada
-void libera(void){
-    free(horario);
-    free(data);
+Time *time;
+Date *date;
+ 
+// Function that frees allocated memory
+void freeMemory(void){
+    free(time);
+    free(date);
 }
 
 int main(void){
-    // Alocando memoria
-    horario = (Horario *) malloc(sizeof(Horario));
-    data = (Data *) malloc(sizeof(Data));
+    // Allocating memory
+    time = (Time *) malloc(sizeof(Time));
+    date = (Date *) malloc(sizeof(Date));
 
-    // Tratando erro de alocação
-    if (horario == NULL || data == NULL){
-        printf("Erro!");
+    // Handling allocation error
+    if (time == NULL || date == NULL){
+        printf("Error!");
         exit(1);
     }    
     
-    // Lendo os dados
-    printf("Digite a data: ");
-    scanf("%d %d %d", &(data->dia), &(data->mes), &(data->ano));
-    printf("Digite o horário: ");
-    scanf("%d %d %d", &(horario->hora), &(horario->minutos), &(horario->segundos));
+    // Reading the data
+    printf("Enter the date: ");
+    scanf("%d %d %d", &(date->day), &(date->month), &(date->year));
+    printf("Enter the time: ");
+    scanf("%d %d %d", &(time->hour), &(time->minutes), &(time->seconds));
 
-    // Validando o horário
-    if(horario->hora >= 0 && horario->hora <= 23 &&
-       horario->minutos >= 0 && horario->minutos <= 59 &&
-       horario->segundos >= 0 && horario->segundos <= 59) {
-           horario->validado = 1;
+    // Validating the time
+    if(time->hour >= 0 && time->hour <= 23 &&
+       time->minutes >= 0 && time->minutes <= 59 &&
+       time->seconds >= 0 && time->seconds <= 59) {
+           time->validated = 1;
     }
     else {
-        horario->validado = 0;
+        time->validated = 0;
     }
 
-    // Validando a data
-    if(data->dia >= 1 && data->dia <= 31 &&
-       data->mes >= 1 && data->mes <= 12 &&
-       data->ano >= 0 && data->ano <= 9999) {
-           data->validado = 1;
+    // Validating the date
+    if(date->day >= 1 && date->day <= 31 &&
+       date->month >= 1 && date->month <= 12 &&
+       date->year >= 0 && date->year <= 9999) {
+           date->validated = 1;
     }
     else {
-        data->validado = 0;
+        date->validated = 0;
     }
 
-    // Imprime a validação
-    horario->validado ? printf("Horário Validado!\n") : printf("Horário Inválido!\n");
-    data->validado ? printf("Data Validada!\n") : printf("Data Inválida!\n");
+    // Print validation
+    time->validated ? printf("Validated Time!\n") : printf("Invalid Time!\n");
+    date->validated ? printf("Validated Date!\n") : printf("Invalid Date!\n");
     
-    // Ao fim do programa chama a função que libera a memória alocada
-    atexit(libera);
+    // At the end of the program, call the function that frees the allocated memory
+    atexit(freeMemory);
 
     return 0;
 }

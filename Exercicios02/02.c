@@ -3,105 +3,105 @@
 #include <string.h>
 #include <time.h>
 
-#define tam 2 // Quantidade de pacientes
+#define Num 10 // Number of patients
 
-// Definindo as estruturas
+// Defining the structures
 typedef struct {
-    int dia, mes, ano;
+    int day, month, year;
 
-} Data;
+} Date;
 
 typedef struct {
     int cpf[12];
-    char nome[50];
-    Data nascimento;
-    int idade;
+    char name[50];
+    Date birth;
+    int age;
 
-} Paciente;
+} Patient;
 
-// Função que recebe a data de nascimento e retorna a idade.
-int CalculaIdade(Data hoje, Data nascimento){
-    int idade = hoje.ano - nascimento.ano;
+// Function that receives the date of birth and returns the age.
+int CalculatesAge(Date today, Date birth){
+    int age = today.year - birth.year;
 
-    if (hoje.mes < nascimento.mes || hoje.mes == nascimento.mes && hoje.dia < nascimento.dia){
-        idade--;
+    if (today.month < birth.month || today.month == birth.month && today.day < birth.day){
+        age--;
     }
 
-    return idade;
+    return age;
 }
 
 int main(void){
-    printf("\nDigite os Dados dos Pacientes:\n");
+    printf("\nEnter Patient Data:\n");
 
-    Paciente *paciente = (Paciente *) malloc(tam * sizeof(Paciente)); // Alocando a estrutura que armazena os pacientes
+    Patient *patient = (Patient *) malloc(Num * sizeof(Patient)); // Allocating the structure that stores patients
 
-    // Tratando erro de alocação
-    if(paciente == NULL){
-        printf("Erro!");
+    // Handling allocation error
+    if(patient == NULL){
+        printf("Error!");
         exit(1);
     }
 
-    // Define a data de hoje.
+    // Sets today's date.
     time_t mytime;
     mytime = time(NULL);
     struct tm tm = *localtime(&mytime);
-    Data hoje = {tm.tm_mday, tm.tm_mon+1, tm.tm_year+1900};
+    Date today = {tm.tm_mday, tm.tm_mon+1, tm.tm_year+1900};
     
-    // Lendo os dados dos pacientes
-    for(int i = 0; i < tam; i++){
-        printf("\nPaciente %d:\n", i+1);
-        // Lendo o CPF como um vetor de inteiros
+    // Reading patient data
+    for(int i = 0; i < Num; i++){
+        printf("\nPatient %d:\n", i+1);
+        // Reading the CPF as a vector of integers
         printf("CPF: ");
         for (int j = 0; j < 11; j++) {
-            scanf("%1d", &paciente[i].cpf[j]);
+            scanf("%1d", &patient[i].cpf[j]);
         }
         getchar();
 
-        printf("Nome: ");
-        fgets(paciente[i].nome, sizeof(paciente[i].nome), stdin);
-        paciente[i].nome[strcspn(paciente[i].nome, "\n")] = '\0'; // Troca o \n do enter lido no final do nome por \0.
+        printf("Name: ");
+        fgets(patient[i].name, sizeof(patient[i].name), stdin);
+        patient[i].name[strcspn(patient[i].name, "\n")] = '\0'; // Changes the \n of the enter read at the end of the name to \0.
 
-        printf("Data de nascimento [dd mm aaaa]: ");
-        scanf("%d %d %d", &(paciente[i].nascimento.dia), &(paciente[i].nascimento.mes), &(paciente[i].nascimento.ano));
+        printf("Date of birth [dd mm yyyy]: ");
+        scanf("%d %d %d", &(patient[i].birth.day), &(patient[i].birth.month), &(patient[i].birth.year));
         getchar();
-        paciente[i].idade = CalculaIdade(hoje, paciente[i].nascimento); // Calcula a idade e armazena na estrutura paciente.
+        patient[i].age = CalculatesAge(today, patient[i].birth); // Calculates age and stores it in the patient structure.
         printf("\n");
 
     }
 
-    // Verifica para cada paciente qual a maior idade.
-    int maior_idade = paciente[0].idade;
-    for (int i=0; i<tam; i++){
-        if (paciente[i].idade > maior_idade){
-            maior_idade = paciente[i].idade;
+    // Check the oldest age for each patient.
+    int older_age = patient[0].age;
+    for (int i=0; i<Num; i++){
+        if (patient[i].age > older_age){
+            older_age = patient[i].age;
         }
     }
     
-    // Mostra o(s) paciente(s) mais velho(s)
-     printf("\nPaciente(s) mais velho(s): \n");
-    for (int i=0; i<tam; i++){
-        if (paciente[i].idade == maior_idade){
-            printf(" [ %s ] ", paciente[i].nome);
+    // Shows the oldest patient(s)
+     printf("\nOlder patient(s): \n");
+    for (int i=0; i<Num; i++){
+        if (patient[i].age == older_age){
+            printf(" [ %s ] ", patient[i].name);
         }    
     }
 
-    // Mostra todos os pacientes com seus dados e diz se são maior ou menor de idade.
-    printf("\n\nPacientes: \n");
-    for (int i = 0; i < tam; i++){
-        printf("\nPaciente %d:\n", i+1);
+    //It shows all patients with their data and says whether they are older or younger.
+    printf("\n\nPatients: \n");
+    for (int i = 0; i < Num; i++){
+        printf("\nPatient %d:\n", i+1);
         printf("CPF: ");
         for (int j = 0; j < 11; j++){
-            printf("%d", paciente[i].cpf[j]);
+            printf("%d", patient[i].cpf[j]);
         }
         printf("\n");
-        printf("Nome: %s\n", paciente[i].nome);
-        printf("Idade: %d\n", CalculaIdade(hoje, paciente[i].nascimento));
+        printf("Name: %s\n", patient[i].name);
+        printf("Age: %d\n", CalculatesAge(today, patient[i].birth));
         
-        paciente[i].idade >= 18 ? printf("Maior de idade\n") : printf("Menor de idade\n");
+        patient[i].age >= 18 ? printf("Over Eighteen\n") : printf("Under Age\n");
         
     }
 
-    free(paciente); // Libera a memoria alocada.
+    free(patient); // Frees the allocated memory.
 
     return 0;
 } 
