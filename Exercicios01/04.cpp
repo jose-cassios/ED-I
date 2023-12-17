@@ -1,4 +1,7 @@
-#include <stdio.h>
+#include <iostream>
+#include <iomanip>
+
+using namespace std;
 
 int main(void){
     // Declaring variables
@@ -7,7 +10,7 @@ int main(void){
     char notnum = '1', *notnump;
     
     // Printing variables before modification
-    printf("num = %d, dec = %.2f, notnum = %c\n", num, dec, notnum);
+    cout << "num = " << num << ", dec = " << fixed << setprecision(2) << dec << ", notnum = " << notnum << endl;
 
     // Associating variables with pointers
     nump = &num;
@@ -20,7 +23,7 @@ int main(void){
     *notnump = '0';
 
     // Printing variables after modification
-    printf("num = %d, dec = %.2f, notnum = %c\n", num, dec, notnum);
+    cout << "num = " << num << ", dec = " << fixed << setprecision(2) << dec << ", notnum = " << notnum << endl;
     
     return 0;
 }
