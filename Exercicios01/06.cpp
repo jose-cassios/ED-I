@@ -4,7 +4,7 @@ using namespace std;
 
 int main(void) {
     // Declaring variables
-    int v[4] = {0, 1, 2, 3};
+    int v[4] {0, 1, 2, 3};
     int *pointer;
 
     pointer = v; // Passing the vector head address

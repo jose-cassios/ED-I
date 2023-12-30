@@ -11,7 +11,7 @@ int main(void){
 
     // Reading the grades to be stored in the vector
     for (int i = 0; i < size; i++){
-        printf("Enter the grade of the student %d: ", i+1);
+        cout << "Enter the grade of the student " << (i+1) << ": ";
         cin >> grades[i];
     }
 
