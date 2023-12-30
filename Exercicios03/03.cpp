@@ -1,22 +1,24 @@
-#include <stdio.h>
-#include <stdlib.h>
-#include <cstdlib>
-#include "03_util.h"
-#include <time.h>
-#include <string.h>
+#include "03.hpp"
 
-int main(void){
-    srand(time(NULL)); // Initializes the random seed, for each code initialization.
-    
-    player *jogadores = (player *) malloc(4 * sizeof(player)); // Dynamically allocate the player
-    card *cartas = (card *) malloc(20 * sizeof(card));
+extern const int numPlayers;
+extern const int numCards;
 
-    read_players(jogadores, cartas);
+int main() {
+    srand(time(NULL)); // Initializes the random seed for each code initialization.
 
-    show_players(jogadores);
-    
-    free(jogadores);
-    free(cartas);
+    // Allocating memory for players and cards
+    Card *cards = new Card[numCards];
+    Player *players = new Player[numPlayers];
+
+    // Reading players and dealing cards
+    read_players(players, cards);
+
+    // Displaying players' cards
+    show_players(players);
+
+    // Deallocating memory
+    delete[] players;
+    delete[] cards;
 
     return 0;
 }
