@@ -1,3 +1,3 @@
-**Explorando o básico da linguagem C.**
+**Explorando o básico das linguagens C e C++.**
 
 Exercícios resolvidos e avaliações.
